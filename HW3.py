@@ -1,10 +1,12 @@
-﻿# Your name:
-# Your student id:
-# Your email:
-# List who you have worked with on this homework:
+﻿# Your name: Priya Varshika Ganji
+# Your student id: 28394873
+# Your email: pganji@umich.edu
+# List who you have worked with on this homework: Priya Ganji (by myself)
 
 
 # import the random module for use in this program
+
+import random
 
 # Create the class Fortune_Teller
     # create the constructor (__init__) method
@@ -12,17 +14,33 @@
     # it sets this object's fortunes_list (instance variable) to the passed list of possible answers
     # it sets this object's questions_list (instance variable) to an empty list
     # it sets this object's fortunes_history_list (instance variable) to an empty list
-    
 
+class Fortune_Teller:
+
+    def __init__(self, fortunes_list):
+        self.fortunes_list = fortunes_list
+        self.questions_list = []
+        self.fortunes_history_list = []
+
+    
     # create the __str__ method
     # It should return a string with all the fortunes
     # in fortunes_list separated by commas
     # For example : "Yes, No, Not clear"
 
+    def __str__(self):
+        for i in self.fortunes_list:
+# need to finish !!!!
+
     # create the get_fortune method
     # it randomly picks an index from 0 to the number of items in the fortunes_list minus one
     # it adds that index to the end of the fortunes_history_list
     # it returns the answer at the picked index
+
+    def get_fortune(self):
+        num = random.randint(0, len(self.fortunes_list)-1)
+        self.fortunes_history_list.append(num)
+        return self.fortunes_list[num]
 
     # create the question_check method that takes a question
     # it checks if the question is in the questions_list and if so returns
@@ -30,11 +48,29 @@
     # Otherwise it adds the question to the questions_list and
     # returns the fortune from get_fortune
 
+    def question_check(self, question):
+        if (question in self.questions_list ):
+            return "I've already answered that question"
+        else:
+            self.questions_list.append(question)
+            response = self.get_fortune()
+            return response
+
+
     # create the print_questions_history method
     # prints "[answer index] question - answer" for each of the indices in the fortunes_history_list
     # from the first to the last with each on a separate line.  If there are no items in the
     # fortunes_history_list it prints "None yet"
     # it does not return anything!
+
+    def print_questions_history(self):
+        if self.fortunes_history_list == []:
+            print ("None yet")
+
+        else: 
+            for i in range(len(self.fortunes_history_list)):
+                print("[" + str(self.fortunes_history_list[i]) + ']' + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
+
 
     # EXTRA POINTS
     # create the most_frequent method
