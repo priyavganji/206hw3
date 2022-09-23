@@ -2,9 +2,8 @@
 # Your student id: 28394873
 # Your email: pganji@umich.edu
 # List who you have worked with on this homework: Priya Ganji (by myself)
-
-
 # import the random module for use in this program
+
 
 import random
 
