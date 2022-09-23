@@ -29,7 +29,9 @@ class Fortune_Teller:
     # For example : "Yes, No, Not clear"
 
     def __str__(self):
-        for i in self.fortunes_list:
+        list = ','.join(self.fortunes_list)
+        return list
+
 # need to finish !!!!
 
     # create the get_fortune method
@@ -38,7 +40,8 @@ class Fortune_Teller:
     # it returns the answer at the picked index
 
     def get_fortune(self):
-        num = random.randint(0, len(self.fortunes_list)-1)
+
+        num = random.randint(0, len(self.fortunes_list) - 1)
         self.fortunes_history_list.append(num)
         return self.fortunes_list[num]
 
@@ -49,8 +52,10 @@ class Fortune_Teller:
     # returns the fortune from get_fortune
 
     def question_check(self, question):
-        if (question in self.questions_list ):
+
+        if (question in self.questions_list):
             return "I've already answered that question"
+
         else:
             self.questions_list.append(question)
             response = self.get_fortune()
@@ -64,13 +69,17 @@ class Fortune_Teller:
     # it does not return anything!
 
     def print_questions_history(self):
+
         if self.fortunes_history_list == []:
+
             print ("None yet")
 
         else: 
+
             for i in range(len(self.fortunes_history_list)):
                 print("[" + str(self.fortunes_history_list[i]) + ']' + self.questions_list[i] + " - " + self.fortunes_list[self.fortunes_history_list[i]])
 
+        return
 
     # EXTRA POINTS
     # create the most_frequent method
@@ -93,14 +102,27 @@ def main():
     bot = Fortune_Teller(fortunes_list)
 
     # get the first question or quit
+    # Q for question
+    Q = ("Ask a question or type quit: ")
+    Que = input(Q)
 
     # loop while question is not "quit"
+
+    while Que != "quit":
+
+        Ans = bot.question_check(Que)
+        print(Que + " - " + Ans)
+        Q = ("Ask a question or type quit: ")
+        Que = input(Q)
+        
+    return
 
         # get an answer from question_check
 
         # print question - answer
 
         # get the next question or quit 
+   
 
 def test():
 
@@ -147,4 +169,5 @@ def test():
 # only run the main function if this file is being run (not imported)
 if __name__ == "__main__":
     main()
-    #test() TODO: Uncomment when you are ready to test your Fortune_Teller class
+    test() 
+    # TODO: Uncomment when you are ready to test your Fortune_Teller class
